@@ -28,6 +28,11 @@
             console.log('Escuhando:', payload );
         });
 
+        socket.on('active-bands', function( bands ){
+            console.clear();
+            console.table('Bandas Activas:', bands );
+        });
+
 
     </script>
 
