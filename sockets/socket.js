@@ -38,8 +38,13 @@ io.on('connection', (client) => {
     io.emit('active-bands', bands.getBands())
   })
 
-  //escuchar add-band
-  //bands.addBand
+  client.on('delete-band', (payload) => {
+    bands.deleteBand(payload.id)
+    io.emit('active-bands', bands.getBands())
+  })
+
+  //escuchar delete-band
+  //bands.deleteBand
   //io.emit activeBands
 
   // client.on('nuevo-mensaje', (payload) => {
