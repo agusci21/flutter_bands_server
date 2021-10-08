@@ -28,10 +28,15 @@ io.on('connection', client => {
 
     });
 
-    client.on('nuevo-mensaje', (payload) => {
-        console.log(payload);
-        //io.emit('nuevo-mensaje', payload); Emite a todos
-        client.broadcast.emit('nuevo-mensaje', payload);//Emite a todos menos al emisor
+    client.on('vote-band', (payload) => {
+        bands.voteBand(payload.id);
+        io.emit('active-bands', bands.getBands());
     });
+
+    // client.on('nuevo-mensaje', (payload) => {
+    //     console.log(payload);
+    //     //io.emit('nuevo-mensaje', payload); Emite a todos
+    //     client.broadcast.emit('nuevo-mensaje', payload);//Emite a todos menos al emisor
+    // });
 
 });
